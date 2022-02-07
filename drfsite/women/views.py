@@ -17,11 +17,9 @@ class WomenAPIView(APIView):
         return Response({'posts': lst})
 
     def post(self, request):
-        post_new = Women.objects.create(
-            title=request.data['title'],
-            content=request.data['content'],
-            cat_id=request.data['cat_id']
-        )
-        return Response({'post': model_to_dict(post_new)})
+        serializer = WomenSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({'post': serializer.data})
     # queryset = Women.objects.all()
     # serializer_class = WomenSerializer
