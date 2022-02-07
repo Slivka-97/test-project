@@ -16,7 +16,7 @@ class WomenSerializer(serializers.Serializer):
 
 
 def encode():
-    model = WomenModel("New Actor", "New Actor content")
+    model = WomenModel("New Actor", "Neww Actor content")
     model_sr = WomenSerializer(model)
     print(model_sr.data)
     json = JSONRenderer().render(model_sr.data)
