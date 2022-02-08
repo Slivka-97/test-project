@@ -24,6 +24,7 @@ class WomenAPIView(APIView):
         return Response({'post': serializer.data})
 
     def put(self, request, *args, **kwargs):
+        p = kwargs.get('pk')
         pk = request.data.get("pk", None)
         if not pk:
             return Response({'Error': 'Method PUT not allowed'})
