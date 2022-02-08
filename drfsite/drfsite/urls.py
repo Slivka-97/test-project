@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from women.views import WomenAPIView
+from women.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', WomenAPIView.as_view()),
-    path('api/<int:pk>/', WomenAPIView.as_view()),
+    path('api/', WomenAPIList.as_view()),
+    path('api/<int:pk>/', WomenAPIUpdate.as_view()),
+    path('api/del/<int:pk>/', WomenAPIDelete.as_view()),
 ]

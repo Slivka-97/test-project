@@ -11,18 +11,24 @@ from women.models import Women
 # self.cat_id = cat_id
 
 
-class WomenSerializer(serializers.Serializer):
-    title = serializers.CharField(max_length=255)
-    content = serializers.CharField()
-    cat_id = serializers.IntegerField()
+class WomenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Women
+        fields = "__all__"
+    #title = serializers.CharField(max_length=255)
+    #content = serializers.CharField()
+    #cat_id = serializers.IntegerField()
 
-    def create(self, validated_data):
-        return Women.objects.create(**validated_data)
+    # def create(self, validated_data):
+    #     return Women.objects.create(**validated_data)
 
-
-    def update(self, instance, validated_data):
-        instance.title = validated_data.get("title", instance.title)
-        instance.content = validated_data.get("content", instance.content)
-        instance.cat_id = validated_data.get("cat_id", instance.cat_id)
-        instance.save()
-        return instance
+    # def update(self, instance, validated_data):
+    #     instance.title = validated_data.get("title", instance.title)
+    #     instance.content = validated_data.get("content", instance.content)
+    #     instance.cat_id = validated_data.get("cat_id", instance.cat_id)
+    #     instance.save()
+    #     return instance
+    #
+    # def __delete__(self, instance):
+    #     instance.delete()
+    #     return 'delete'
